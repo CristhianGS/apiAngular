@@ -1,0 +1,53 @@
+<p>por capital!</p>
+<hr>
+<div class="row">
+    <div class="col">
+        <app-pais-input (onEnter)="buscar($event)"></app-pais-input>
+    </div>
+</div>
+<hr>
+<div *ngIf= "hayError" class="alert alert-danger">
+    no se encuentra
+</div>
+<div class="row">
+    <div class="col">
+        <table border="">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Bandera
+                    </th>
+                    <th>
+                        Capital
+                    </th>
+                    <th>
+                        País
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pais of paises let i=index">
+                    <td>
+                        {{i+1}}
+                    </td>
+                    <td>
+                        <img [src]="pais.flag" width=200px; >
+                    </td>
+                    <td>
+                        {{pais.capital}}
+                    </td>
+                    <td>
+                        {{pais.name}}
+                    </td>
+                    <td>
+                        <a [routerLink]="['/pais', pais.alpha2Code]">veer</a>
+                    </td>
+                </tr>
+            </tbody>
+        
+        </table>
+    </div>
+</div>
